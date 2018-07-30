@@ -31,6 +31,7 @@
             <scope>test</scope>
         </dependency>
 
+        <!--业务模块集成-->
         <dependency>
             <groupId>com.xinlizz</groupId>
             <artifactId>oh-dal</artifactId>

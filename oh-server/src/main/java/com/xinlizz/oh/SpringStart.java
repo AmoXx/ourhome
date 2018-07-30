@@ -10,7 +10,8 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
  */
 @EnableAutoConfiguration
 public class SpringStart {
+
     public static void main(String[] args) {
-//        SpringApplication.main(SpringStart.class,args);
+        SpringApplication.run(SpringStart.class, args);
     }
 }

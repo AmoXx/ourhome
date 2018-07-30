@@ -1,10 +1,7 @@
 package com.xinlizz.oh.mapper;
 
-import com.xinlizz.oh.dto.UserInfoDto;
-import com.xinlizz.oh.dto.UserInfoDtoExample;
-import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Mapper;
 
-import java.util.List;
-
+@Mapper
 public interface UserInfoDtoMapperExt extends UserInfoDtoMapper {
 }

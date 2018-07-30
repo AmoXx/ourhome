@@ -48,6 +48,7 @@
             <ignoreColumn column="updater"/>
             <ignoreColumn column="update_date"/>
             <ignoreColumn column="is_deleted"/>-->
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
     </context>
 </generatorConfiguration>
