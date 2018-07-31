@@ -46,6 +46,16 @@ public interface ILoginService {
     boolean validateLoginNum(String loginNum);
 
     /**
+     * 根据ID查询登录信息
+     *
+     * @author xinlizz
+     * @Date 2018/7/31
+     * @Param [loginId]
+     * @return com.xinlizz.oh.dto.LoginInfoDto
+     */
+    LoginInfoDto queryLoginInfoById(Long loginId);
+
+    /**
      * 修改密码
      *
      * @author xinlizz

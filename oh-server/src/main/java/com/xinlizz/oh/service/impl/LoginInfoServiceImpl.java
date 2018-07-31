@@ -91,9 +91,14 @@ public class LoginInfoServiceImpl implements ILoginService {
     }
 
     @Override
-    public void modifyLoginPassword(Long loginId, String loginPassword) {
-        LoginInfoDto loginInfoDto = loginInfoDtoMapperExt.selectByPrimaryKey(loginId);
-        loginInfoDto.setLoginPassword(PasswordEnOrDescUtil.encodePassword(loginPassword));
+    public LoginInfoDto queryLoginInfoById(Long loginId) {
+        return loginInfoDtoMapperExt.selectByPrimaryKey(loginId);
+    }
+
+    @Override
+    public void modifyLoginPassword(Long loginId, String newPwd) {
+        LoginInfoDto loginInfoDto = queryLoginInfoById(loginId);
+        loginInfoDto.setLoginPassword(PasswordEnOrDescUtil.encodePassword(newPwd));
         loginInfoDtoMapperExt.updateByPrimaryKeySelective(loginInfoDto);
     }
 }
