@@ -10,6 +10,7 @@
         <module>oh-api</module>
         <module>oh-server</module>
         <module>oh-dal</module>
+        <module>oh-rock</module>
     </modules>
     <packaging>pom</packaging>
 
