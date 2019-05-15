@@ -13,7 +13,7 @@ public interface ILoginService {
      *
      * @return com.xinlizz.oh.dto.LoginInfoDto
      */
-    LoginInfoVo doLogin(LoginInfoDto loginInfoDto) throws Exception;
+    LoginInfoVo doLogin(LoginInfoDto loginInfoDto);
 
     /**
      * 用户注册
@@ -23,7 +23,7 @@ public interface ILoginService {
      * @Param [loginInfoDto]
      * @return com.xinlizz.oh.dto.LoginInfoDto
      */
-    LoginInfoDto registeLoginInfo(LoginInfoDto loginInfoDto) throws Exception;
+    LoginInfoDto registeLoginInfo(LoginInfoDto loginInfoDto);
 
     /**
      * 退出系统
@@ -33,7 +33,7 @@ public interface ILoginService {
      * @Param [loginInfoDto]
      * @return void
      */
-    void doLogout(LoginInfoDto loginInfoDto) throws Exception;
+    void doLogout(LoginInfoDto loginInfoDto);
 
     /**
      * 校验登录账号是否重复

@@ -42,7 +42,7 @@ public class LoginInfoServiceImpl implements ILoginService {
     private RedisTemplate<String, LoginInfoVo> redisTemplate;
 
     @Override
-    public LoginInfoVo doLogin(LoginInfoDto loginInfoDto) throws Exception {
+    public LoginInfoVo doLogin(LoginInfoDto loginInfoDto) {
         LoginInfoDtoExample example = new LoginInfoDtoExample();
         example.createCriteria().andLoginNumEqualTo(loginInfoDto.getLoginNum()).andLoginPasswordEqualTo(PasswordEnOrDescUtil.encodePassword(loginInfoDto.getLoginPassword())).andIsDeletedEqualTo(CommonConstant.NO);
         List<LoginInfoDto> list = loginInfoDtoMapperExt.selectByExample(example);
@@ -50,7 +50,7 @@ public class LoginInfoServiceImpl implements ILoginService {
             return null;
         }
         LoginInfoVo loginInfoVo = new LoginInfoVo();
-        BeanUtils.copyProperties(list.get(0), loginInfoVo, new String[]{"loginPassword"});
+        BeanUtils.copyProperties(list.get(0), loginInfoVo, "loginPassword");
         UserInfoDto userInfoDto = userInfoService.queryUserInfoByLoginId(loginInfoVo.getId());
         loginInfoVo.setUserInfoDto(userInfoDto);
         redisTemplate.opsForValue().set(loginInfoVo.getId().toString(), loginInfoVo);
@@ -59,7 +59,7 @@ public class LoginInfoServiceImpl implements ILoginService {
     }
 
     @Override
-    public LoginInfoDto registeLoginInfo(LoginInfoDto loginInfoDto) throws Exception {
+    public LoginInfoDto registeLoginInfo(LoginInfoDto loginInfoDto) {
         loginInfoDto.setLoginPassword(PasswordEnOrDescUtil.encodePassword(loginInfoDto.getLoginPassword()));
         loginInfoDtoMapperExt.insertSelective(loginInfoDto);
 
@@ -71,7 +71,7 @@ public class LoginInfoServiceImpl implements ILoginService {
     }
 
     @Override
-    public void doLogout(LoginInfoDto loginInfoDto) throws Exception {
+    public void doLogout(LoginInfoDto loginInfoDto) {
         loginInfoDto = redisTemplate.opsForValue().get(loginInfoDto.getId());
         if (null != loginInfoDto) {
             redisTemplate.delete(loginInfoDto.getId().toString());
